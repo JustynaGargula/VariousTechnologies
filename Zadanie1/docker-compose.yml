@@ -1,0 +1,4 @@
+services:
+  gradle-project:
+    image: projekt1-5.0:latest
+    build: .
