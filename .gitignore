@@ -1,7 +1,7 @@
 .gradle
 build
 .idea
-/target
+*/target
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,scala,playframework
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,scala,playframework
