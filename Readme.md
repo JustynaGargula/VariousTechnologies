@@ -1,7 +1,7 @@
 # Zadania ebiznes
 ## Lista zadań
-* [Zadanie 1 Docker](##-zadanie-1-docker)
-* [Zadanie 2 Scala](##-zadanie-2-scala)
+* [Zadanie 1 Docker](#zadanie-1-docker)
+* [Zadanie 2 Scala](#zadanie-2-scala)
 
 ## Zadanie 1 Docker
 ### Link do hub.docker.com:
