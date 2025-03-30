@@ -15,3 +15,16 @@ GET     /products/:id   controllers.ProductController.getProductById(id: Int)
 POST    /products/add   controllers.ProductController.addProduct(id: Int, name: String, price: Double)
 PUT     /products/update   controllers.ProductController.updateProduct(id: Int, name: String, price: Double)
 DELETE  /products/:id   controllers.ProductController.deleteProduct(id: Int)
+
+# Endpointy koszyka
+POST    /cart/:id       controllers.CartController.addProductToCart(id: Int)
+GET     /cart           controllers.CartController.getCart()
+PUT     /cart/:id       controllers.CartController.updateProductQuantity(id: Int, newQuantity: Int)
+DELETE  /cart/:id       controllers.CartController.deleteProductFromCart(id: Int)
+
+# Endpointy kategori
+GET     /categories           controllers.CategoryController.getAllCategories
+GET     /categories/:id       controllers.CategoryController.getCategoryById(id: Int)
+POST    /categories/add       controllers.CategoryController.addCategory(id: Int, name: String, description: String)
+PUT     /categories/:id       controllers.CategoryController.updateCategory(id: Int, newName: String, newDescription: String)
+DELETE  /categories/:id       controllers.CategoryController.deleteCategory(id: Int)
