@@ -4,7 +4,15 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
 )
+  
+type Product struct {
+	gorm.Model
+	id  string
+	price uint
+	name string
+  }
 
 func main() {
 	e := echo.New()
