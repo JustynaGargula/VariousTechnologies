@@ -40,6 +40,11 @@ suspend fun main() {
             if(message.content.contains( "/categories")){
                 message.channel.createMessage(Data.getAllCategories())
             }
+            else if(message.content.contains("/products")){
+                // Category id should be last character of user message
+                var categoryId = message.content.substring(message.content.length-1)
+                message.channel.createMessage(Data.getProductsForCategory(categoryId.toLong()))
+            }
             else{
                 message.addReaction(ReactionEmoji.Unicode("❤️"))
                 println("Message ${message.content}")

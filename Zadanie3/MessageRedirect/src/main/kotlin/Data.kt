@@ -15,4 +15,22 @@ object Data {
             "**${category.name}** (ID: ${category.id})\n\t${category.description ?: "_brak opisu_"}"
         }
     }
+
+    fun getProductsForCategory(categoryId: Long): String{
+        var categoryProducts = mutableListOf<Product>()
+        for (product in products){
+            if(product.category.id == categoryId){
+                categoryProducts.add(product)
+            }
+        }
+        if (categoryProducts.size>0){
+            return categoryProducts.joinToString("\n") { product: Product ->
+                "**${product.name}** (ID: ${product.id}), price: ${product.price}"
+            }
+        }
+        else {
+            return "No products in this category"
+        }
+
+    }
 }
