@@ -2,6 +2,8 @@
 ## Lista zadań
 * [Zadanie 1 Docker](#zadanie-1-docker)
 * [Zadanie 2 Scala](#zadanie-2-scala)
+* [Zadanie 3 Kotlin](#zadanie-3-kotlin)
+* [Zadanie 4 Go](#zadanie-4-go)
 
 ## Zadanie 1 Docker
 ### Link do hub.docker.com:
@@ -38,16 +40,15 @@ show by id (get), update (put), delete (delete), add (post).
 
 Kod w folderze: Zadanie2/ProductController
 
-## Zadanie 3
+## Zadanie 3 Kotlin
 
-* 3.0 Należy stworzyć aplikację kliencką w Kotlinie we frameworku Ktor,
-która pozwala na przesyłanie wiadomości na platformę Discord
-* 3.5 Aplikacja jest w stanie odbierać wiadomości użytkowników z
-platformy Discord skierowane do aplikacji (bota)
+* 3.0 Należy stworzyć aplikację kliencką w Kotlinie we frameworku Ktor, która pozwala na przesyłanie wiadomości na platformę Discord [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/00ba0fcbc03e8cbb0f7be04069ac930d50af2c47)
+* 3.5 Aplikacja jest w stanie odbierać wiadomości użytkowników z platformy Discord skierowane do aplikacji (bota) [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/db75ed340f1c11f04775e1f44a4dbe37ab55f72a)
 * 4.0 Zwróci listę kategorii na określone żądanie użytkownika
 * 4.5 Zwróci listę produktów wg żądanej kategorii
-* 5.0 Aplikacja obsłuży dodatkowo jedną z platform: Slack, Messenger,
-Webex
+* 5.0 Aplikacja obsłuży dodatkowo jedną z platform: Slack, Messenger, Webex
+
+Kod w folderze: Zadanie3/MessageRedirect
 
 ## Zadanie 4 Go
 
