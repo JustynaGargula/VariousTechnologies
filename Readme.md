@@ -45,8 +45,8 @@ Kod w folderze: Zadanie2/ProductController
 
 * 3.0 Należy stworzyć aplikację kliencką w Kotlinie we frameworku Ktor, która pozwala na przesyłanie wiadomości na platformę Discord [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/00ba0fcbc03e8cbb0f7be04069ac930d50af2c47)
 * 3.5 Aplikacja jest w stanie odbierać wiadomości użytkowników z platformy Discord skierowane do aplikacji (bota) [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/db75ed340f1c11f04775e1f44a4dbe37ab55f72a)
-* 4.0 Zwróci listę kategorii na określone żądanie użytkownika
-* 4.5 Zwróci listę produktów wg żądanej kategorii
+* 4.0 Zwróci listę kategorii na określone żądanie użytkownika [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/cec2cd346359ada456deb466e1464b958d561e6a)
+* 4.5 Zwróci listę produktów wg żądanej kategorii [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/c1b74a089be7b62d57fc90fd0b367a93d4c6f39d)
 * 5.0 Aplikacja obsłuży dodatkowo jedną z platform: Slack, Messenger, Webex
 
 Kod w folderze: Zadanie3/MessageRedirect
