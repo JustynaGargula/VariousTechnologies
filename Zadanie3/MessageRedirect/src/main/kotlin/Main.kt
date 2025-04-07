@@ -37,8 +37,13 @@ suspend fun main() {
     val kord = Kord(discordBotToken)
     kord.on<MessageCreateEvent> {
         if(message.author?.isBot == false){
-            message.addReaction(ReactionEmoji.Unicode("❤️"))
-            println("Message ${message.content}")
+            if(message.content.contains( "/categories")){
+                message.channel.createMessage(Data.getAllCategories())
+            }
+            else{
+                message.addReaction(ReactionEmoji.Unicode("❤️"))
+                println("Message ${message.content}")
+            }
         }
     }
     kord.login()
