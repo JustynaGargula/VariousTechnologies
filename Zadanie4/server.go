@@ -2,6 +2,7 @@ package main
 
 import (
 	"Zadanie4/controllers"
+	"Zadanie4/database"
 
 	"net/http"
 
@@ -9,6 +10,8 @@ import (
 )
   
 func main() {
+	database.InitDB()
+
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")

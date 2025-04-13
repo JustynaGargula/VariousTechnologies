@@ -1,40 +1,28 @@
 package controllers
 
 import (
-	"net/http"
+	"Zadanie4/database"
+	"Zadanie4/models"
 	"strconv"
 
+	"net/http"
+
 	"github.com/labstack/echo/v4"
-	"gorm.io/gorm"
 )
 
-var products = []Product{
-    {Id: "1", Name: "Produkt 1", Price: 100},
-    {Id: "2", Name: "Produkt 2", Price: 200},
-}
-var lastUsedId = products[len(products)-1].Id
-
-type Product struct {
-	gorm.Model
-	Id    string
-	Name  string `json:"name"`
-	Price uint `json:"price"`
-}
-
-func getNewId() string {
-	num, _ := strconv.Atoi(lastUsedId)
-	num = num+1
-	lastUsedId = strconv.Itoa(num)
-	return lastUsedId
-}
-
 func CreateProduct(c echo.Context) error {
-	var newProduct Product
-	bindError := c.Bind(&newProduct)
-	if bindError == nil {
-		newProduct.Id = getNewId()
-		products = append(products, newProduct)
-		return c.JSON(http.StatusOK, "Created product with id: "+newProduct.Id)
+	var product models.Product
+	bindError := c.Bind(&product)
+	if bindError == nil {		
+		var newProduct = models.Product{
+			Name: product.Name,
+			Price: product.Price,
+		}
+		res := database.DB.Create(&newProduct)
+		if res.Error != nil {
+			return c.JSON(http.StatusBadRequest, res.Error)
+		}
+		return c.JSON(http.StatusOK, newProduct)
 	} else{
 		return c.JSON(http.StatusBadRequest, bindError)
 	}
@@ -42,45 +30,58 @@ func CreateProduct(c echo.Context) error {
 }
 
 func GetProduct(c echo.Context) error {
-	id := c.Param("id")
-	for _, product := range products {
-		if product.Id == id {
-			return c.JSON(http.StatusOK, product)
-		}
+	idParam := c.Param("id")
+	id, err := strconv.ParseUint(idParam, 10, 64)
+	if err != nil {
+		return c.String(http.StatusBadRequest, "Invalid ID format")
 	}
-	return c.String(http.StatusNotFound, "Product not found")
+
+	var product models.Product
+	result2 := database.DB.First(&product, uint(id))
+	if result2.Error != nil {
+		return c.String(http.StatusNotFound, "Product not found")
+	}
+	return c.JSON(http.StatusOK, product)
 }
 
 func GetProducts(c echo.Context) error {
-  return c.JSON(http.StatusOK, products)
+	var products []models.Product
+	result := database.DB.Find(&products)
+	if result.Error != nil {
+		return c.String(http.StatusNotFound, "No products found")
+	}
+  	return c.JSON(http.StatusOK, products)
 }
 
 func UpdateProduct(c echo.Context) error {
-	id := c.Param("id")
-	var updatedProduct Product
+	idParam := c.Param("id")
+	id, err := strconv.ParseUint(idParam, 10, 64)
+	if err != nil {
+		return c.String(http.StatusBadRequest, "Invalid ID format")
+	}
+	
+	var product models.Product
+	var updatedProduct models.Product
 	bindError := c.Bind(&updatedProduct)
 	if bindError == nil {
-		updatedProduct.Id = id
-
-		for index, product := range products {
-			if product.Id == id {
-				products[index] = updatedProduct
-				return c.JSON(http.StatusOK, "Updated product with id: "+updatedProduct.Id)
-			}
+		res := database.DB.Find(&product, uint(id))
+		if res.Error != nil {
+			return c.String(http.StatusNotFound, "Product not found")
+		} else {
+			database.DB.Model(&product).Updates(updatedProduct)
+			return c.JSON(http.StatusOK, updatedProduct)
 		}
-		return c.String(http.StatusNotFound, "Product not found")
-	} else{
+	} else {
 		return c.JSON(http.StatusBadRequest, bindError)
 	}
 }
 
 func DeleteProduct (c echo.Context) error {
 	id := c.Param("id")
-	for index, product := range products {
-		if product.Id == id {
-			products = append(products[:index], products[index+1:]...)
-			return c.String(http.StatusOK, "Deleted product with id: "+id)
-		}
+	var product models.Product
+	result := database.DB.Delete(&product, id)
+	if result.Error != nil {
+		return c.String(http.StatusNotFound, "Couldn't find product with id: "+id)
 	}
-	return c.String(http.StatusNotFound, "Couldn't find product with id: "+id)
+	return c.String(http.StatusOK, "Deleted product with id: "+id)
 }
