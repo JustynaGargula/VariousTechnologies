@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Products from './Components/Products'
+import Payment from "./Components/Payment";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/*<App />*/}
     <Products />
+    <Payment></Payment>
   </React.StrictMode>
 );
 
