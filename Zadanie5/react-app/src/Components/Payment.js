@@ -40,10 +40,6 @@ function Payment() {
             <p>Amount to pay: {totalAmount}</p>
             <form onSubmit={sendPayment}>
                 <div>
-                    <label>Amount</label>
-                    <input type="number" name="amount" value={formData.amount} required  onChange={handleChange}/>
-                </div>
-                <div>
                     <label>Card number</label>
                     <input type="text" name="cardNumber" value={formData.cardNumber} required  onChange={handleChange}/>
                 </div>
