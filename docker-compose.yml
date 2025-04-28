@@ -1,0 +1,21 @@
+
+services:
+  server:
+    build: ./Zadanie4
+    ports:
+      - "1323:1323"
+    networks:
+      - app-network
+
+  client:
+    build: ./Zadanie5/react-app
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - server
+
+networks:
+  app-network:
+    driver: bridge
