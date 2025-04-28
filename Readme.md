@@ -6,6 +6,7 @@
 * [Zadanie 4 Go](#zadanie-4-go)
 * [Zadanie 5 React](#zadanie-5-react)
 * [Zadanie 6 Testy](#zadanie-6-testy)
+* [Zadanie 7 Sonar](#zadanie-7-sonar)
 
 ## Zadanie 1 Docker
 ### Link do hub.docker.com:
@@ -110,3 +111,23 @@ projektu z minimum 50 asercjami
 * 4.5 Należy dodać testy API, należy pokryć wszystkie endpointy z
 minimum jednym scenariuszem negatywnym per endpoint
 * 5.0 Należy uruchomić testy funkcjonalne na Browserstacku
+
+## Zadanie 7 Sonar
+
+Należy dodać projekt aplikacji klienckiej oraz serwerowej (jeden
+branch, dwa repozytoria) do Sonara w wersji chmurowej
+(https://sonarcloud.io/). Należy poprawić aplikacje uzyskując 0 bugów,
+0 zapaszków, 0 podatności, 0 błędów bezpieczeństwa. Dodatkowo należy
+dodać widżety sonarowe do README w repozytorium dane projektu z
+wynikami.
+
+* 3.0 Należy dodać litera do odpowiedniego kodu aplikacji serwerowej w
+hookach gita
+* 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
+aplikacji serwerowej)
+* 4.0 Należy wyeliminować wszystkie zapaszki w kodzie w Sonarze (kod
+aplikacji serwerowej)
+* 4.5 Należy wyeliminować wszystkie podatności oraz błędy bezpieczeństwa
+w kodzie w Sonarze (kod aplikacji serwerowej)
+* 5.0 Należy wyeliminować wszystkie błędy oraz zapaszki w kodzie
+aplikacji klienckiej
