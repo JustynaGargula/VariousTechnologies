@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -8,6 +8,15 @@ import Cart from "./Components/Cart";
 import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 
 function Index() {
+    const [cartItems, setCartItems] = useState([
+            { id: 1, name: 'Produkt A', quantity: 2, price: 50 },
+            { id: 2, name: 'Produkt B', quantity: 1, price: 100 },
+    ]);
+
+    const addToCart = (product) => {
+        setCartItems(prevItems => [...prevItems, product]);
+    };
+
     return (
         <Router>
             <nav>
@@ -15,8 +24,8 @@ function Index() {
             </nav>
 
             <Routes>
-                <Route path="/" element={<Products />} />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/" element={<Products addToCart={addToCart} />} />
+                <Route path="/cart" element={<Cart cartItems={cartItems} />} />
                 <Route path="/payment" element={<Payment></Payment>}></Route>
             </Routes>
         </Router>

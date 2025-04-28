@@ -1,22 +1,19 @@
-import {useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
-function Cart() {
+function Cart({cartItems}) {
     const url = "http://localhost:1323/cart";
-
-    const [cartItems, setCartItems] = useState([
-        { id: 1, name: 'Produkt A', quantity: 2, price: 50 },
-        { id: 2, name: 'Produkt B', quantity: 1, price: 100 },
-    ]);
 
     const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    const navigate = useNavigate();
 
     const sendCart = async (err) => {
         try {
             const res = await axios.post(url, cartItems)
             console.log("Successfully sent cart data: ", res.data);
             alert("Successfully sent cart data");
+            navigate('/payment', { state: { totalAmount } });
         }
         catch(error) {
             console.error("Sending cart data error:", error);

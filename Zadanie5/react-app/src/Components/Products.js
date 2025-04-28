@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-function Products() {
+function Products({addToCart}) {
 
     const [products, setProducts] = useState([])
     const url = "http://localhost:1323/products";
@@ -11,6 +11,10 @@ function Products() {
                 console.log("Couldn't fetch products. Got error: ", error);
             })
     }, []);
+
+    function addProductToCart(product){
+        addToCart(product)
+    }
 
     return (
         <div>
@@ -24,6 +28,7 @@ function Products() {
                             <li>Price: {product.price}</li>
                             <li>Description: {product.description}</li>
                         </ul>
+                        <button onClick={addProductToCart(product)}>Add to cart</button>
                     </li>
                 ))}
             </ul>

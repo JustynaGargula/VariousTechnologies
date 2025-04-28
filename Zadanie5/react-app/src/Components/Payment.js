@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import {useLocation} from "react-router-dom";
 
 
 function Payment() {
@@ -10,6 +11,9 @@ function Payment() {
         expiryDate: "",
         cvv: ""
     });
+
+    const location = useLocation();
+    const { totalAmount } = location.state || { totalAmount: 0 };
 
     const sendPayment = async(err) => {
         err.preventDefault();
@@ -33,6 +37,7 @@ function Payment() {
     return (
         <div>
             <h1>Payment page</h1>
+            <p>Amount to pay: {totalAmount}</p>
             <form onSubmit={sendPayment}>
                 <div>
                     <label>Amount</label>
