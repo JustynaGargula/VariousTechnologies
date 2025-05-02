@@ -27,4 +27,4 @@ trap cleanup EXIT
 
 # Przejdź do katalogu z testami i uruchom je
 cd ../Zadanie6/tests
-go run tests.go
+go run main.go

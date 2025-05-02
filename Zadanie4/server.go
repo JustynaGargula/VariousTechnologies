@@ -10,7 +10,6 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-  
 func main() {
 
 	database.InitDB()
@@ -21,10 +20,9 @@ func main() {
 		AllowOrigins: []string{"http://localhost:3000"}, // frontend Reactowy
 		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete},
 	}))
-	
 
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
+		return c.HTML(http.StatusOK, "<h1>Hello, World!</h1>")
 	})
 
 	// Products

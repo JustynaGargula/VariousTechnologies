@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"log"
+
+	"tests/testCases"
 
 	"github.com/tebeka/selenium"
 	"github.com/tebeka/selenium/chrome"
@@ -25,19 +26,12 @@ func main() {
 	}
 	defer wd.Quit()
 
-	if err := wd.Get("http://localhost:1323"); err != nil {
-        log.Fatalf("Nie można otworzyć strony: %s", err)
-    }
-
-	fmt.Println("Test 1. Pobranie tytułu strony")
-	title, err := wd.Title()
-    if err != nil {
-        log.Fatalf("Nie można pobrać tytułu strony: %s", err)
-    }
-	expected := ""
-    if title == expected {
-        fmt.Println("✅ Test zaliczony! Tytuł to:", title)
-    } else {
-        fmt.Printf("❌ Test niezaliczony. Oczekiwano '%s', otrzymano '%s'\n", expected, title)
-    }
+	testCases.SetWebDriver(wd)
+	testCases.Test1()
+	testCases.Test2()
+	testCases.Test3()
+	testCases.Test4()
+	testCases.Test5()
+	testCases.Test6()
+	testCases.Test7()
 }
