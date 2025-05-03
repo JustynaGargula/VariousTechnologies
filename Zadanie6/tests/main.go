@@ -34,4 +34,9 @@ func main() {
 	testCases.Test5()
 	testCases.Test6()
 	testCases.Test7()
+	testCases.Test8()
+	testCases.Test9()
+	testCases.Test10()
+	testCases.Test11()
+
 }

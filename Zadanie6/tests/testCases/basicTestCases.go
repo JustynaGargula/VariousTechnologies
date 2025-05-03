@@ -12,6 +12,7 @@ import (
 
 var wd selenium.WebDriver
 var newProductID int
+var newProductName = "Checked notebook"
 
 func SetWebDriver(webDriver selenium.WebDriver) {
 	wd = webDriver
@@ -75,7 +76,7 @@ func Test5() {
 	fmt.Println("Test 5. Odczytanie produktów")
 	content, err := wd.PageSource()
 	if err != nil {
-		log.Fatalf("Nie znaleziono nagłówka h1: %s", err)
+		log.Fatalf("Nie znaleziono nic na stronie z produktami: %s", err)
 	}
 
 	errorMessage := "No products found"
@@ -90,7 +91,7 @@ func Test6() {
 	fmt.Println("Test 6. Dodanie produktu")
 
 	product := map[string]interface{}{
-		"Name":  "Checked notebook",
+		"Name":  newProductName,
 		"Price": 10,
 	}
 	body, err := json.Marshal(product)
@@ -124,12 +125,76 @@ func Test6() {
 }
 
 func Test7() {
-	fmt.Println("Test 7. Szczegóły produktu")
+	fmt.Println("Test 7. Otworzenie podstrony z szczegółami produktu")
 	url := "http://localhost:1323/products/" + fmt.Sprint(newProductID)
 	if err := wd.Get(url); err != nil {
 		log.Fatalf("Nie można otworzyć strony szczegółów produktu: %s", err)
 		fmt.Println("❌ Test niezaliczony.")
 	} else {
 		fmt.Printf("✅ Test zaliczony! Udało się otworzyć stronę szczegółów produktu z ID: %d. \n", newProductID)
+	}
+}
+
+func Test8() {
+	fmt.Println("Test 8. Odebranie szczegółów produktu")
+	content, err := wd.PageSource()
+	if err != nil {
+		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
+	}
+
+	errorMessage := "Product not found"
+	if content != errorMessage {
+		fmt.Println("✅ Test zaliczony! Poprawnie odebrano szczegóły produktu.")
+	} else {
+		fmt.Printf("❌ Test niezaliczony. Otrzymano wiadomość '%s'\n", errorMessage)
+	}
+}
+
+func Test9() {
+	fmt.Println("Test 9. Sprawdzenie szczegółów produktu")
+	content, err := wd.FindElement(selenium.ByCSSSelector, "pre")
+	if err != nil {
+		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
+	}
+
+	contentText, _ := content.Text()
+	var product map[string]interface{}
+	err = json.Unmarshal([]byte(contentText), &product)
+	if err != nil {
+		log.Fatalf("Błąd parsowania JSON: %v", err)
+	}
+
+	if product["name"] == newProductName {
+		fmt.Println("✅ Test zaliczony! Poprawnie odczytano nazwę produktu.")
+	} else {
+		fmt.Println("❌ Test niezaliczony: błędna nazwa produktu.")
+	}
+
+}
+
+func Test10() {
+	fmt.Println("Test 10. Otworzenie podstrony szczegółów usuniętego produktu")
+	url := "http://localhost:1323/products/1"
+	if err := wd.Get(url); err != nil {
+		log.Fatalf("Nie można otworzyć strony szczegółów produktu: %s", err)
+		fmt.Println("❌ Test niezaliczony.")
+	} else {
+		fmt.Printf("✅ Test zaliczony! Udało się otworzyć stronę szczegółów produktu z ID: 1\n")
+	}
+}
+
+func Test11() {
+	fmt.Println("Test 11. Pobranie szczegółów usuniętego produktu")
+	content, err := wd.FindElement(selenium.ByTagName, "pre")
+	if err != nil {
+		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
+	}
+	contentText, _ := content.Text()
+
+	errorMessage := "Product not found"
+	if contentText == errorMessage {
+		fmt.Printf("✅ Test zaliczony! Poprawnie odebrano wiadomość '%s'\n", errorMessage)
+	} else {
+		fmt.Printf("❌ Test niezaliczony. Oczekiwano '%s', otrzymano '%s'\n", errorMessage, contentText)
 	}
 }
