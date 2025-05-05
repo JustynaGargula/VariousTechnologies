@@ -7,6 +7,7 @@ import Payment from "./Components/Payment";
 import Cart from "./Components/Cart";
 import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 import Login from "./Components/Login";
+import SignIn from "./Components/SignIn";
 
 function Index() {
     const [cartItems, setCartItems] = useState([
@@ -22,7 +23,7 @@ function Index() {
         <Router>
             <nav>
                 <Link to="/">Products</Link> | <Link to="/cart">Cart</Link> | <Link to="/payment">Payment</Link>
-                | <Link to="/login">Login</Link>
+                | <Link to="/login">Log In</Link> | <Link to="/signin">Sign In</Link>
             </nav>
 
             <Routes>
@@ -30,6 +31,7 @@ function Index() {
                 <Route path="/cart" element={<Cart cartItems={cartItems} />} />
                 <Route path="/payment" element={<Payment></Payment>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
+                <Route path="/signin" element={<SignIn></SignIn>}></Route>
             </Routes>
         </Router>
     );
