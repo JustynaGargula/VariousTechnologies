@@ -1,0 +1,3 @@
+Zadanie jest w folderze Zadanie5, żeby logowanie było kolejną funkcjonalnością tej aplikacji.
+
+Link do repozytorium na GitHubie: https://github.com/JustynaGargula/VariousTechnologies/tree/main/Zadanie5/react-app
