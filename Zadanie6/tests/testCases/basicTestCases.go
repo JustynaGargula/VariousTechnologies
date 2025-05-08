@@ -13,6 +13,8 @@ import (
 var wd selenium.WebDriver
 var newProductID int
 var newProductName = "Checked notebook"
+var newCartID int
+var newCartItemName = "product 1"
 
 func SetWebDriver(webDriver selenium.WebDriver) {
 	wd = webDriver
@@ -196,5 +198,105 @@ func Test11() {
 		fmt.Printf("✅ Test zaliczony! Poprawnie odebrano wiadomość '%s'\n", errorMessage)
 	} else {
 		fmt.Printf("❌ Test niezaliczony. Oczekiwano '%s', otrzymano '%s'\n", errorMessage, contentText)
+	}
+}
+
+func Test12() {
+	fmt.Println("Test 12. Dodanie nowego koszyka")
+	cart := map[string]interface{}{
+		"items": []map[string]interface{}{
+			{
+				"name":     newCartItemName,
+				"price":    99.9,
+				"quantity": 1,
+			},
+			{
+				"name":     "product 2",
+				"price":    11.99,
+				"quantity": 2,
+			},
+		},
+	}
+
+	body, err := json.Marshal(cart)
+	if err != nil {
+		log.Fatalf("Nie udało się zserializować JSON: %v", err)
+	}
+
+	resp, err := http.Post("http://localhost:1323/cart", "application/json", bytes.NewBuffer(body))
+	if err != nil {
+		log.Fatalf("Request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusOK {
+		log.Fatalf("Nieprawidłowy status: %d", resp.StatusCode)
+	}
+
+	var result map[string]interface{}
+	err = json.NewDecoder(resp.Body).Decode(&result)
+	if err != nil {
+		log.Fatalf("Nie udało się sparsować odpowiedzi JSON: %v", err)
+	}
+
+	if result["ID"] == 0 {
+		fmt.Printf("❌ Test niezaliczony. Koszyk nie został poprawnego ID: %v. \n", result["ID"])
+	} else {
+		idFloat, _ := result["ID"].(float64)
+		newCartID = int(idFloat)
+		fmt.Printf("✅ Test zaliczony! Poprawnie dodano nowy produkt z ID: %d. \n", newCartID)
+	}
+}
+
+func Test13() {
+	fmt.Println("Test 13. Otworzenie strony z koszykiem")
+	url := "http://localhost:1323/cart/" + fmt.Sprint(newCartID)
+	fmt.Println("url: ", url)
+	err := wd.Get(url)
+	if err != nil {
+		log.Fatalf("Nie można otworzyć strony z koszykiem: %s", err)
+		fmt.Println("❌ Test niezaliczony.")
+	} else {
+		fmt.Printf("✅ Test zaliczony! Udało się otworzyć stronę z koszykiem z ID: %d\n", newCartID)
+	}
+}
+
+func Test14() {
+	fmt.Println("Test 14. Wyświetlenie koszyka")
+	content, err := wd.PageSource()
+	if err != nil {
+		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
+	}
+
+	errorMessage := "Cart not found"
+	if content != errorMessage {
+		fmt.Println("✅ Test zaliczony! Poprawnie odebrano koszyk.")
+	} else {
+		fmt.Printf("❌ Test niezaliczony. Otrzymano wiadomość '%s'\n", errorMessage)
+	}
+}
+
+func Test15() {
+	fmt.Println("Test 15. Poprawna zawartość koszyka")
+	content, err := wd.FindElement(selenium.ByCSSSelector, "pre")
+	if err != nil {
+		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
+	}
+
+	contentText, _ := content.Text()
+	var cart map[string]interface{}
+	err = json.Unmarshal([]byte(contentText), &cart)
+	if err != nil {
+		log.Fatalf("Błąd parsowania JSON: %v", err)
+	}
+
+	items := cart["items"].([]interface{})
+	firstItem := items[0].(map[string]interface{})
+	name := firstItem["name"].(string)
+
+	if name == newCartItemName {
+		fmt.Println("✅ Test zaliczony! Poprawnie odczytano nazwę produktu w koszyku.")
+	} else {
+		fmt.Printf("❌ Test niezaliczony: błędna nazwa produktu w koszyku. Oczekiwano: %s, otrzymano: %s.\n", newCartItemName, name)
 	}
 }
