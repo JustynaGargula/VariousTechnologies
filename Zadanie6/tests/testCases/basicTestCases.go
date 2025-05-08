@@ -21,7 +21,7 @@ func SetWebDriver(webDriver selenium.WebDriver) {
 }
 
 func Test1() {
-	fmt.Println("Test 1. Otworzenie strony głównej")
+	fmt.Println("\nTest 1. Otworzenie strony głównej")
 	if err := wd.Get("http://localhost:1323"); err != nil {
 		log.Fatalf("Nie można otworzyć strony: %s", err)
 		fmt.Println("❌ Test niezaliczony.")
@@ -31,7 +31,7 @@ func Test1() {
 }
 
 func Test2() {
-	fmt.Println("Test 2. Pobranie tytułu strony")
+	fmt.Println("\nTest 2. Pobranie tytułu strony")
 	title, err := wd.Title()
 	if err != nil {
 		log.Fatalf("Nie można pobrać tytułu strony: %s", err)
@@ -45,7 +45,7 @@ func Test2() {
 }
 
 func Test3() {
-	fmt.Println("Test 3. Sprawdzenie zawartości strony głównej")
+	fmt.Println("\nTest 3. Sprawdzenie zawartości strony głównej")
 	content, err := wd.FindElement(selenium.ByCSSSelector, "h1")
 	if err != nil {
 		log.Fatalf("Nie znaleziono nagłówka h1: %s", err)
@@ -65,7 +65,7 @@ func Test3() {
 }
 
 func Test4() {
-	fmt.Println("Test 4. Otworzenie /products")
+	fmt.Println("\nTest 4. Otworzenie /products")
 	if err := wd.Get("http://localhost:1323/products"); err != nil {
 		log.Fatalf("Nie można otworzyć strony: %s", err)
 		fmt.Println("❌ Test niezaliczony.")
@@ -75,7 +75,7 @@ func Test4() {
 }
 
 func Test5() {
-	fmt.Println("Test 5. Odczytanie produktów")
+	fmt.Println("\nTest 5. Odczytanie produktów")
 	content, err := wd.PageSource()
 	if err != nil {
 		log.Fatalf("Nie znaleziono nic na stronie z produktami: %s", err)
@@ -90,7 +90,7 @@ func Test5() {
 }
 
 func Test6() {
-	fmt.Println("Test 6. Dodanie produktu")
+	fmt.Println("\nTest 6. Dodanie produktu")
 
 	product := map[string]interface{}{
 		"Name":  newProductName,
@@ -127,7 +127,7 @@ func Test6() {
 }
 
 func Test7() {
-	fmt.Println("Test 7. Otworzenie podstrony z szczegółami produktu")
+	fmt.Println("\nTest 7. Otworzenie podstrony z szczegółami produktu")
 	url := "http://localhost:1323/products/" + fmt.Sprint(newProductID)
 	if err := wd.Get(url); err != nil {
 		log.Fatalf("Nie można otworzyć strony szczegółów produktu: %s", err)
@@ -138,7 +138,7 @@ func Test7() {
 }
 
 func Test8() {
-	fmt.Println("Test 8. Odebranie szczegółów produktu")
+	fmt.Println("\nTest 8. Odebranie szczegółów produktu")
 	content, err := wd.PageSource()
 	if err != nil {
 		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
@@ -153,7 +153,7 @@ func Test8() {
 }
 
 func Test9() {
-	fmt.Println("Test 9. Sprawdzenie szczegółów produktu")
+	fmt.Println("\nTest 9. Sprawdzenie szczegółów produktu")
 	content, err := wd.FindElement(selenium.ByCSSSelector, "pre")
 	if err != nil {
 		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
@@ -175,7 +175,7 @@ func Test9() {
 }
 
 func Test10() {
-	fmt.Println("Test 10. Otworzenie podstrony szczegółów usuniętego produktu")
+	fmt.Println("\nTest 10. Otworzenie podstrony szczegółów usuniętego produktu")
 	url := "http://localhost:1323/products/1"
 	if err := wd.Get(url); err != nil {
 		log.Fatalf("Nie można otworzyć strony szczegółów produktu: %s", err)
@@ -186,7 +186,7 @@ func Test10() {
 }
 
 func Test11() {
-	fmt.Println("Test 11. Pobranie szczegółów usuniętego produktu")
+	fmt.Println("\nTest 11. Pobranie szczegółów usuniętego produktu")
 	content, err := wd.FindElement(selenium.ByTagName, "pre")
 	if err != nil {
 		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
@@ -202,7 +202,7 @@ func Test11() {
 }
 
 func Test12() {
-	fmt.Println("Test 12. Dodanie nowego koszyka")
+	fmt.Println("\nTest 12. Dodanie nowego koszyka")
 	cart := map[string]interface{}{
 		"items": []map[string]interface{}{
 			{
@@ -249,9 +249,8 @@ func Test12() {
 }
 
 func Test13() {
-	fmt.Println("Test 13. Otworzenie strony z koszykiem")
+	fmt.Println("\nTest 13. Otworzenie strony z koszykiem")
 	url := "http://localhost:1323/cart/" + fmt.Sprint(newCartID)
-	fmt.Println("url: ", url)
 	err := wd.Get(url)
 	if err != nil {
 		log.Fatalf("Nie można otworzyć strony z koszykiem: %s", err)
@@ -262,7 +261,7 @@ func Test13() {
 }
 
 func Test14() {
-	fmt.Println("Test 14. Wyświetlenie koszyka")
+	fmt.Println("\nTest 14. Wyświetlenie koszyka")
 	content, err := wd.PageSource()
 	if err != nil {
 		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
@@ -277,7 +276,7 @@ func Test14() {
 }
 
 func Test15() {
-	fmt.Println("Test 15. Poprawna zawartość koszyka")
+	fmt.Println("\nTest 15. Poprawna zawartość koszyka")
 	content, err := wd.FindElement(selenium.ByCSSSelector, "pre")
 	if err != nil {
 		log.Fatalf("Nie znaleziono nic na stronie: %s", err)
@@ -298,5 +297,119 @@ func Test15() {
 		fmt.Println("✅ Test zaliczony! Poprawnie odczytano nazwę produktu w koszyku.")
 	} else {
 		fmt.Printf("❌ Test niezaliczony: błędna nazwa produktu w koszyku. Oczekiwano: %s, otrzymano: %s.\n", newCartItemName, name)
+	}
+}
+
+func Test16() {
+	fmt.Println("\nTest 16. Podanie nieprawidłowego ID koszyka")
+	url := "http://localhost:1323/cart/-1"
+	err := wd.Get(url)
+	if err != nil {
+		log.Fatalf("Nie można otworzyć strony z koszykiem: %s", err)
+	}
+
+	contentRaw, _ := wd.FindElement(selenium.ByCSSSelector, "pre")
+	content, _ := contentRaw.Text()
+	if content != "Invalid ID format" {
+		fmt.Println("❌ Test niezaliczony. Nie wykryto nieprawidłowego ID")
+	} else {
+		fmt.Printf("✅ Test zaliczony! Wykryto nieprawidłowe ID. Otrzymano wiadomość: %s\n", content)
+	}
+}
+
+func Test17() {
+	fmt.Println("\nTest 17. Podanie nieprawidłowego ID produktu")
+	url := "http://localhost:1323/products/-1"
+	err := wd.Get(url)
+	if err != nil {
+		log.Fatalf("Nie można otworzyć strony z produktem: %s", err)
+	}
+
+	contentRaw, _ := wd.FindElement(selenium.ByCSSSelector, "pre")
+	content, _ := contentRaw.Text()
+	if content != "Invalid ID format" {
+		fmt.Println("❌ Test niezaliczony. Nie wykryto nieprawidłowego ID")
+	} else {
+		fmt.Printf("✅ Test zaliczony! Wykryto nieprawidłowe ID. Otrzymano wiadomość: %s\n", content)
+	}
+}
+
+func Test18() {
+	fmt.Println("\nTest 18. Próba otwarcia koszyka bez podania jego ID (z użyciem endpointu dla POST)")
+	url := "http://localhost:1323/cart"
+	err := wd.Get(url)
+	if err != nil {
+		log.Fatalf("Nie można otworzyć strony z koszykiem: %s", err)
+	}
+
+	contentRaw, _ := wd.FindElement(selenium.ByCSSSelector, "pre")
+	content, _ := contentRaw.Text()
+	var messageJson map[string]interface{}
+	err = json.Unmarshal([]byte(content), &messageJson)
+	if err != nil {
+		log.Fatalf("Błąd parsowania JSON: %v", err)
+	}
+
+	if messageJson["message"] != "Method Not Allowed" {
+		fmt.Println("❌ Test niezaliczony. Nie wykryto nieprawidłowego użycia endpointu")
+	} else {
+		fmt.Printf("✅ Test zaliczony! Wykryto nieprawidłowe użycie endpointu. Otrzymano wiadomość: %s\n", messageJson["message"])
+	}
+}
+
+func Test19() {
+	fmt.Println("\nTest 19. Dodanie produktu bez ceny")
+
+	product := map[string]interface{}{
+		"Name": newProductName,
+	}
+	body, err := json.Marshal(product)
+	if err != nil {
+		log.Fatalf("Nie udało się zserializować JSON: %v", err)
+	}
+
+	resp, err := http.Post("http://localhost:1323/products", "application/json", bytes.NewBuffer(body))
+	if err != nil {
+		log.Fatalf("Błąd podczas żądania POST: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusOK {
+		fmt.Printf("✅ Test zaliczony! Nie dodano produktu. Status odpowiedzi to %d\n", resp.StatusCode)
+	} else {
+		fmt.Printf("❌ Test niezaliczony. Dodano produkt z nieistniejącą cenę. Status odpowiedzi to %d\n", resp.StatusCode)
+	}
+}
+
+func Test20() {
+	fmt.Println("\nTest 20. Dodanie koszyka z produktani bez ceny")
+	cart := map[string]interface{}{
+		"items": []map[string]interface{}{
+			{
+				"name":     newCartItemName,
+				"quantity": 1,
+			},
+			{
+				"name":     "product 2",
+				"quantity": 2,
+			},
+		},
+	}
+
+	body, err := json.Marshal(cart)
+	if err != nil {
+		log.Fatalf("Nie udało się zserializować JSON: %v", err)
+	}
+
+	resp, err := http.Post("http://localhost:1323/cart", "application/json", bytes.NewBuffer(body))
+	if err != nil {
+		log.Fatalf("Request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusOK {
+		fmt.Printf("✅ Test zaliczony! Nie dodano koszyka. Status odpowiedzi to %d\n", resp.StatusCode)
+	} else {
+		fmt.Printf("❌ Test niezaliczony. Dodano koszyk z nieistniejącymi cenami. Status odpowiedzi to %d\n", resp.StatusCode)
 	}
 }
