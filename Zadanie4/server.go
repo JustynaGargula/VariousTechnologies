@@ -32,6 +32,10 @@ func main() {
 	e.PUT("/products/:id", controllers.UpdateProduct)
 	e.DELETE("/products/:id", controllers.DeleteProduct)
 
+	//Cart
+	e.GET("/cart/:id", controllers.GetCart)
+	e.POST("/cart", controllers.AddCart)
+
 	e.Logger.Fatal(e.Start(":1323"))
 
 }
