@@ -113,9 +113,9 @@ uruchamiać się na platformie Browserstack (5.0). Proszę pamiętać o
 stworzeniu darmowego konta via https://education.github.com/pack.
 
 - 3.0 Należy stworzyć 20 przypadków testowych w CypressJS lub Selenium
-  (Kotlin, Python, Java, JS, Go, Scala)
+  (Kotlin, Python, Java, JS, Go, Scala) [this commit + previous ones](https://github.com/JustynaGargula/VariousTechnologies/commit/f636830de81aba80e9d19e59fa3f65fbda53250a)
 - 3.5 Należy rozszerzyć testy funkcjonalne, aby zawierały minimum 50
-  asercji
+  asercji [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/37ee40f9c92bc8626b56102230258bfeb89365c7)
 - 4.0 Należy stworzyć testy jednostkowe do wybranego wcześniejszego
   projektu z minimum 50 asercjami
 - 4.5 Należy dodać testy API, należy pokryć wszystkie endpointy z
@@ -154,8 +154,8 @@ wyłączając z komunikacji aplikację serwerową, np. wykorzystując auth0.
 Prawidłowa komunikacja: react-sewer-dostawca-serwer(via return
 uri)-react.
 
-* 3.0 logowanie przez aplikację serwerową (bez Oauth2)
-* 3.5 rejestracja przez aplikację serwerową (bez Oauth2)
-* 4.0 logowanie via Google OAuth2
-* 4.5 logowanie via Facebook lub Github OAuth2
-* 5.0 zapisywanie danych logowania OAuth2 po stronie serwera
+- 3.0 logowanie przez aplikację serwerową (bez Oauth2)
+- 3.5 rejestracja przez aplikację serwerową (bez Oauth2)
+- 4.0 logowanie via Google OAuth2
+- 4.5 logowanie via Facebook lub Github OAuth2
+- 5.0 zapisywanie danych logowania OAuth2 po stronie serwera
