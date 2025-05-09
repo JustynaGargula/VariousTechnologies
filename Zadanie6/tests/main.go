@@ -28,25 +28,11 @@ func main() {
 
 	testCases.SetWebDriver(wd)
 
-	testCases.Test1()
-	testCases.Test2()
-	testCases.Test3()
-	testCases.Test4()
-	testCases.Test5()
-	testCases.Test6()
-	testCases.Test7()
-	testCases.Test8()
-	testCases.Test9()
-	testCases.Test10()
-	testCases.Test11()
-	testCases.Test12()
-	testCases.Test13()
-	testCases.Test14()
-	testCases.Test15()
-	testCases.Test16()
-	testCases.Test17()
-	testCases.Test18()
-	testCases.Test19()
-	testCases.Test20()
-
+	// Functional tests
+	testCases.OpenMainPageTest()
+	testCases.GetProductsTest()
+	testCases.AddNewProductTest()
+	testCases.GetDeletedProductTest()
+	testCases.AddNewCartTest()
+	testCases.TryToOpenIncorrectDataTest()
 }

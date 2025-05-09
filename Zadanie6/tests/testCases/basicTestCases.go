@@ -13,8 +13,10 @@ import (
 var wd selenium.WebDriver
 var newProductID int
 var newProductName = "Checked notebook"
+var newProductPrice = 10.0
 var newCartID int
 var newCartItemName = "product 1"
+var newCartItemPrice = 99.9
 
 func SetWebDriver(webDriver selenium.WebDriver) {
 	wd = webDriver
@@ -94,7 +96,7 @@ func Test6() {
 
 	product := map[string]interface{}{
 		"Name":  newProductName,
-		"Price": 10,
+		"Price": newProductPrice,
 	}
 	body, err := json.Marshal(product)
 	if err != nil {
@@ -165,11 +167,15 @@ func Test9() {
 	if err != nil {
 		log.Fatalf("Błąd parsowania JSON: %v", err)
 	}
-
 	if product["name"] == newProductName {
-		fmt.Println("✅ Test zaliczony! Poprawnie odczytano nazwę produktu.")
+		fmt.Println("✅ 1. Test zaliczony! Poprawnie odczytano nazwę produktu.")
 	} else {
-		fmt.Println("❌ Test niezaliczony: błędna nazwa produktu.")
+		fmt.Printf("❌ 1. Test niezaliczony: błędna nazwa produktu. Oczekiwano: %s, otrzymano: %s.\n", newProductName, product["name"])
+	}
+	if product["price"] == newProductPrice {
+		fmt.Println("✅ 2. Test zaliczony! Poprawnie odczytano cenę produktu.")
+	} else {
+		fmt.Printf("❌ 2. Test niezaliczony: błędna cena produktu. Oczekiwano: %f, otrzymano: %f.\n", newProductPrice, product["price"])
 	}
 
 }
@@ -207,7 +213,7 @@ func Test12() {
 		"items": []map[string]interface{}{
 			{
 				"name":     newCartItemName,
-				"price":    99.9,
+				"price":    newCartItemPrice,
 				"quantity": 1,
 			},
 			{
@@ -290,13 +296,25 @@ func Test15() {
 	}
 
 	items := cart["items"].([]interface{})
+
+	if len(items) <= 0 {
+		log.Fatalln("Koszyk nie zawiera żadnych produktów!")
+	}
+
 	firstItem := items[0].(map[string]interface{})
 	name := firstItem["name"].(string)
 
 	if name == newCartItemName {
-		fmt.Println("✅ Test zaliczony! Poprawnie odczytano nazwę produktu w koszyku.")
+		fmt.Println("✅ 1. Test zaliczony! Poprawnie odczytano nazwę produktu w koszyku.")
 	} else {
-		fmt.Printf("❌ Test niezaliczony: błędna nazwa produktu w koszyku. Oczekiwano: %s, otrzymano: %s.\n", newCartItemName, name)
+		fmt.Printf("❌ 1. Test niezaliczony: błędna nazwa produktu w koszyku. Oczekiwano: %s, otrzymano: %s.\n", newCartItemName, name)
+	}
+
+	price := firstItem["price"]
+	if price == newCartItemPrice {
+		fmt.Println("✅ 2. Test zaliczony! Poprawnie odczytano cenę produktu w koszyku.")
+	} else {
+		fmt.Printf("❌ 2. Test niezaliczony: błędna cena produktu w koszyku. Oczekiwano: %f, otrzymano: %f.\n", newCartItemPrice, price)
 	}
 }
 
