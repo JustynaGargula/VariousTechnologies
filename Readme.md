@@ -140,11 +140,11 @@ wynikami.
 - 3.0 Należy dodać litera do odpowiedniego kodu aplikacji serwerowej w
   hookach gita [commit](https://github.com/JustynaGargula/product-app-sonar-test-server/commit/e0071140e264309b9d8ee26492ec9c45bd2bf6e2)
 - 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
-  aplikacji serwerowej) *Nie miałam żadnych wykrytych w Sonarze*
+  aplikacji serwerowej) *Nie miałam żadnych wykrytych w Sonarze* [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=product-app-ebiznes_sonar-test&metric=bugs&token=0729ba6d9dbeefe8a4fa6870d4bbf5aa8861fe2f)](https://sonarcloud.io/summary/new_code?id=product-app-ebiznes_sonar-test)
 - 4.0 Należy wyeliminować wszystkie zapaszki w kodzie w Sonarze (kod
-  aplikacji serwerowej) [commit + w następnym zmieniona nazwa zmiennej](https://github.com/JustynaGargula/product-app-sonar-test-server/commit/0ba144a8a6ce7ac9a7c8c4d7cc36a65af04e358b)
+  aplikacji serwerowej) [commit + w następnym zmieniona nazwa zmiennej](https://github.com/JustynaGargula/product-app-sonar-test-server/commit/0ba144a8a6ce7ac9a7c8c4d7cc36a65af04e358b) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=product-app-ebiznes_sonar-test&metric=code_smells&token=0729ba6d9dbeefe8a4fa6870d4bbf5aa8861fe2f)](https://sonarcloud.io/summary/new_code?id=product-app-ebiznes_sonar-test)
 - 4.5 Należy wyeliminować wszystkie podatności oraz błędy bezpieczeństwa
-  w kodzie w Sonarze (kod aplikacji serwerowej)
+  w kodzie w Sonarze (kod aplikacji serwerowej) [commit + w następnym połączenie RUNów w Dockerfile](https://github.com/JustynaGargula/product-app-sonar-test-server/commit/0a01e8fbc84aae7ac74c1dce36e68524fdfd49ed) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=product-app-ebiznes_sonar-test&metric=security_rating&token=0729ba6d9dbeefe8a4fa6870d4bbf5aa8861fe2f)](https://sonarcloud.io/summary/new_code?id=product-app-ebiznes_sonar-test)
 - 5.0 Należy wyeliminować wszystkie błędy oraz zapaszki w kodzie
   aplikacji klienckiej
 
