@@ -80,6 +80,8 @@ jednak pozostać przy sqlite.
   a produktem
 - 5.0 pogrupować zapytania w gorm’owe scope'y
 
+Kod w folderze: Zadanie4
+
 ## Zadanie 5 React
 
 Należy stworzyć aplikację kliencką wykorzystując bibliotekę React.js.
@@ -100,6 +102,8 @@ przesyłane za pomocą React hooks.
 - 4.5 Należy dodać skrypt uruchamiający aplikację serwerową oraz
   kliencką na dockerze via docker-compose [commit (w następnym commitie jeszcze drobne poprawki zostały dodane)](https://github.com/JustynaGargula/VariousTechnologies/commit/653460750d0f473fa90beb29913aa92d4054a0f0)
 - 5.0 Należy wykorzystać axios’a oraz dodać nagłówki pod CORS
+
+Kod w folderze: Zadanie5/react-app
 
 ## Zadanie 6 Testy
 
@@ -122,6 +126,8 @@ stworzeniu darmowego konta via https://education.github.com/pack.
   minimum jednym scenariuszem negatywnym per endpoint
 - 5.0 Należy uruchomić testy funkcjonalne na Browserstacku
 
+Kod w folderze: Zadanie6/tests
+
 ## Zadanie 7 Sonar
 
 Należy dodać projekt aplikacji klienckiej oraz serwerowej (jeden
@@ -132,15 +138,17 @@ dodać widżety sonarowe do README w repozytorium dane projektu z
 wynikami.
 
 - 3.0 Należy dodać litera do odpowiedniego kodu aplikacji serwerowej w
-  hookach gita
+  hookach gita [commit](https://github.com/JustynaGargula/product-app-sonar-test-server/commit/e0071140e264309b9d8ee26492ec9c45bd2bf6e2)
 - 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
-  aplikacji serwerowej)
+  aplikacji serwerowej) *Nie miałam żadnych wykrytych w Sonarze*
 - 4.0 Należy wyeliminować wszystkie zapaszki w kodzie w Sonarze (kod
-  aplikacji serwerowej)
+  aplikacji serwerowej) [commit + w następnym zmieniona nazwa zmiennej](https://github.com/JustynaGargula/product-app-sonar-test-server/commit/0ba144a8a6ce7ac9a7c8c4d7cc36a65af04e358b)
 - 4.5 Należy wyeliminować wszystkie podatności oraz błędy bezpieczeństwa
   w kodzie w Sonarze (kod aplikacji serwerowej)
 - 5.0 Należy wyeliminować wszystkie błędy oraz zapaszki w kodzie
   aplikacji klienckiej
+
+Kod w osobnych repozytoriach: [serwer](https://github.com/JustynaGargula/product-app-sonar-test-server) i [klient](https://github.com/JustynaGargula/product-app-sonar-test-client)
 
 ## Zadanie 8 Oauth2
 
