@@ -171,7 +171,7 @@ uri)-react.
 
 ## Zadanie 9 LLM
 
-Stworzyć aplikajcę frontendową, która połączy się z osobnym
+Stworzyć aplikację frontendową, która połączy się z osobnym
 serwisem, który przeanalizuje tekst od użytkownika i prześle zapytanie
 do GPT (lub innego LLMa), a następnie prześle odpowiedź do użytkownika. Cały projekt
 należy stworzyć w Pythonie.
@@ -179,7 +179,7 @@ należy stworzyć w Pythonie.
 * 3.0 należy stworzyć po stronie serwerowej osobny serwis do łącznia z
 chatGPT do usługi chat
 * 3.5 należy stworzyć interfejs frontowy dla użytkownika, który
-komunikuje się z serwisem; odpowiedzi powinny być wysyałen do
+komunikuje się z serwisem; odpowiedzi powinny być wysyłane do
 frontendowego interfejsu
 * 4.0 stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy
 * 4.5 filtrowanie po zagadnieniach związanych ze sklepem (np.
