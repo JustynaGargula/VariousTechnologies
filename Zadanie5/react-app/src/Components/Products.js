@@ -28,7 +28,7 @@ function Products({addToCart}) {
                             <li>Price: {product.price}</li>
                             <li>Description: {product.description}</li>
                         </ul>
-                        <button onClick={addProductToCart(product)}>Add to cart</button>
+                        <button onClick={() => addProductToCart(product)}>Add to cart</button>
                     </li>
                 ))}
             </ul>

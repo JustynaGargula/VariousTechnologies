@@ -36,6 +36,9 @@ func main() {
 	e.GET("/cart/:id", controllers.GetCart)
 	e.POST("/cart", controllers.AddCart)
 
+	//Auth
+	e.POST("/login", controllers.LoginHandler)
+
 	e.Logger.Fatal(e.Start(":1323"))
 
 }
