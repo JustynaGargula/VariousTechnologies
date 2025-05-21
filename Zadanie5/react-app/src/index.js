@@ -7,13 +7,12 @@ import Payment from "./Components/Payment";
 import Cart from "./Components/Cart";
 import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 import Login from "./Components/Login";
-import SignIn from "./Components/SignIn";
+import SignUp from "./Components/SignUp";
 
 function Index() {
-    const [cartItems, setCartItems] = useState([
-            { id: 1, name: 'Produkt A', quantity: 2, price: 50 },
-            { id: 2, name: 'Produkt B', quantity: 1, price: 100 },
-    ]);
+    const [cartItems, setCartItems] = useState([]);
+    //            { id: 1, name: 'Produkt A', quantity: 2, price: 50 },
+    //            { id: 2, name: 'Produkt B', quantity: 1, price: 100 },
 
     const addToCart = (product) => {
         setCartItems(prevItems => [...prevItems, product]);
@@ -23,7 +22,7 @@ function Index() {
         <Router>
             <nav>
                 <Link to="/">Products</Link> | <Link to="/cart">Cart</Link> | <Link to="/payment">Payment</Link>
-                | <Link to="/login">Log In</Link> | <Link to="/signin">Sign In</Link>
+                | <Link to="/login">Log In</Link> | <Link to="/signup">Sign Up</Link>
             </nav>
 
             <Routes>
@@ -31,7 +30,7 @@ function Index() {
                 <Route path="/cart" element={<Cart cartItems={cartItems} />} />
                 <Route path="/payment" element={<Payment></Payment>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
-                <Route path="/signin" element={<SignIn></SignIn>}></Route>
+                <Route path="/signup" element={<SignUp></SignUp>}></Route>
             </Routes>
         </Router>
     );

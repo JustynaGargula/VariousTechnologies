@@ -1,46 +1,51 @@
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-function Login(){
-    const navigate = useNavigate()
+function SignUp(){
+    const navigate = useNavigate();
 
-    async function handleLogin(e) {
+    async function handleSignUp(e){
         e.preventDefault()
-        const url = "http://localhost:1323/login";
+        const url = "http://localhost:1323/signup";
         const form = e.target;
         const name = form.elements.username.value;
         const password = form.elements.password.value;
+        const email = form.elements.email.value;
 
         try {
             const res = await axios.post(url, {
                 "Name": name,
+                "Email": email,
                 "Password": password
             })
-            console.log("Token: ", res.data.token)
 
             alert(res.data.message)
-            navigate("/")
+            navigate("/login")
         } catch (err) {
-            const errMessage = err.response?.data?.error || "Login failed"
+            const errMessage = err.response?.data?.error || "Sign up failed"
             alert(errMessage)
         }
     }
 
     return (
         <div>
-            <h1>Log in</h1>
-            <form onSubmit={handleLogin}>
+            <h1>Sign in</h1>
+            <form onSubmit={handleSignUp}>
                 <div>
                     <label id="username">User name</label>
                     <input type="text" name="username"/>
                 </div>
                 <div>
+                    <label id="email">Email</label>
+                    <input type="email" name="email"/>
+                </div>
+                <div>
                     <label id="password">Password</label>
                     <input type="password" name="password"/>
                 </div>
-                <button type="submit">Log in</button>
+                <button type="submit">Sign in</button>
             </form>
         </div>
     )
 }
-export default Login
+export default SignUp

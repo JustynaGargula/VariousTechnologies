@@ -38,6 +38,7 @@ func main() {
 
 	//Auth
 	e.POST("/login", controllers.LoginHandler)
+	e.POST("/signup", controllers.SignUpHandler)
 
 	e.Logger.Fatal(e.Start(":1323"))
 
