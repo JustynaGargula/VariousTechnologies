@@ -163,11 +163,13 @@ wyłączając z komunikacji aplikację serwerową, np. wykorzystując auth0.
 Prawidłowa komunikacja: react-sewer-dostawca-serwer(via return
 uri)-react.
 
-- 3.0 logowanie przez aplikację serwerową (bez Oauth2)
-- 3.5 rejestracja przez aplikację serwerową (bez Oauth2)
+- 3.0 logowanie przez aplikację serwerową (bez Oauth2) [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/8e7605d11a388a7906666d8d29fc8fb8e2bf1ae9)
+- 3.5 rejestracja przez aplikację serwerową (bez Oauth2) [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/5af8e9c6448b330ee9888878b9f156f8617962cd)
 - 4.0 logowanie via Google OAuth2
 - 4.5 logowanie via Facebook lub Github OAuth2
 - 5.0 zapisywanie danych logowania OAuth2 po stronie serwera
+
+kod dołączony do **/Zadanie4** i **/Zadanie5/react-app**
 
 ## Zadanie 9 LLM
 
