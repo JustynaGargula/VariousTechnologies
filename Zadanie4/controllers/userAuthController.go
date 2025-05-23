@@ -3,11 +3,41 @@ package controllers
 import (
 	"Zadanie4/database"
 	"Zadanie4/models"
+	"log"
 	"net/http"
+	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
+	"golang.org/x/oauth2"
+	"golang.org/x/oauth2/google"
 )
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
+
+var oauthConf = &oauth2.Config{
+	ClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
+	ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET_KEY"),
+	RedirectURL:  "http://localhost:3000",
+	Scopes: []string{
+		"https://www.googleapis.com/auth/userinfo.profile",
+		"https://www.googleapis.com/auth/userinfo.email"},
+	Endpoint: google.Endpoint,
+}
+
+var oauthStateString = "random"
+
+func GoogleLoginHandler(c echo.Context, w http.ResponseWriter, r *http.Request) {
+	url := oauthConf.AuthCodeURL(oauthStateString)
+	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
+	//TODO zrobić handleCallback i w ogóle skleić to
+}
 
 func LoginHandler(c echo.Context) error {
 	var req models.LoginRequest
