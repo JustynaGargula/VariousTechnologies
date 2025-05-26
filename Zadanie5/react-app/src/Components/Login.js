@@ -26,6 +26,10 @@ function Login(){
         }
     }
 
+    function handleGoogleLogin(){
+        window.location.href = "http://localhost:1323/google-login";
+    }
+
     return (
         <div>
             <h1>Log in</h1>
@@ -40,6 +44,9 @@ function Login(){
                 </div>
                 <button type="submit">Log in</button>
             </form>
+            <p>or</p>
+            <button onClick={handleGoogleLogin}>Login with Google</button>
+
         </div>
     )
 }

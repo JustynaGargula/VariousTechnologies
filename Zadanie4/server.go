@@ -39,6 +39,8 @@ func main() {
 	//Auth
 	e.POST("/login", controllers.LoginHandler)
 	e.POST("/signup", controllers.SignUpHandler)
+	http.HandleFunc("/google-login", controllers.GoogleLoginHandler)
+	http.HandleFunc("/google-login-callback", controllers.GoogleLoginCallbackHandler)
 
 	e.Logger.Fatal(e.Start(":1323"))
 

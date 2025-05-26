@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -17,6 +17,15 @@ function Index() {
     const addToCart = (product) => {
         setCartItems(prevItems => [...prevItems, product]);
     };
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get("token");
+        if(token) {
+            localStorage.setItem("jwt", token);
+            window.history.replaceState({}, document.title, "/");
+        }
+    }, []);
 
     return (
         <Router>
