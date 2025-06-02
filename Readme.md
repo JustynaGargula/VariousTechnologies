@@ -183,8 +183,8 @@ należy stworzyć w Pythonie.
 chatGPT do usługi chat [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/25e2db4c0a66b7c83a2a4a0fb339c830e04c7f8f)
 * 3.5 należy stworzyć interfejs frontowy dla użytkownika, który
 komunikuje się z serwisem; odpowiedzi powinny być wysyłane do
-frontendowego interfejsu
-* 4.0 stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy
+frontendowego interfejsu [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/8bb0ce0fdf6bd3554f22fa999b1d3622eaeb3be2)
+* 4.0 stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/24d8f6882cbffb80f64e2cd6c66b5f5ba72af2ee)
 * 4.5 filtrowanie po zagadnieniach związanych ze sklepem (np.
 ograniczenie się jedynie do ubrań oraz samego sklepu) do GPT
 * 5.0 filtrowanie odpowiedzi po sentymencie
