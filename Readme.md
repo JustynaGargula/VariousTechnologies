@@ -180,7 +180,7 @@ do GPT (lub innego LLMa), a następnie prześle odpowiedź do użytkownika. Cał
 należy stworzyć w Pythonie.
 
 * 3.0 należy stworzyć po stronie serwerowej osobny serwis do łącznia z
-chatGPT do usługi chat
+chatGPT do usługi chat [commit](https://github.com/JustynaGargula/VariousTechnologies/commit/25e2db4c0a66b7c83a2a4a0fb339c830e04c7f8f)
 * 3.5 należy stworzyć interfejs frontowy dla użytkownika, który
 komunikuje się z serwisem; odpowiedzi powinny być wysyłane do
 frontendowego interfejsu
