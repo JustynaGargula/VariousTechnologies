@@ -1,17 +1,34 @@
 import requests
+from fastapi import FastAPI, Body
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
-llamaUrl = "http://localhost:11434/api/generate"
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"]
+)
 
-examplePayload = {
-    "model": "llama3",
-    "prompt": "Tell me something about this shop",
-    "stream": False
-}
 
-response = requests.post(url=llamaUrl, json=examplePayload)
+class PromptRequest(BaseModel):
+    prompt: str
 
-responseData = response.json()
-print("Assistant response: ", responseData["response"])
 
-# if __name__ == '__main__':
-#     print_hi('PyCharm')
+@app.post("/ask")
+def ask_assistant(prompt_req: PromptRequest = Body(...)):
+    llm_url = "http://localhost:11434/api/generate"
+
+    payload = {
+        "model": "llama3.2",
+        "prompt": prompt_req.prompt,
+        "stream": False
+    }
+    response = requests.post(url=llm_url, json=payload)
+
+    if response.status_code == 200:
+        response_data = response.json()
+        return f"Assistant response: {response_data['response']}"
+    else:
+        return f"Error: {response.text}"
