@@ -29,6 +29,6 @@ def ask_assistant(prompt_req: PromptRequest = Body(...)):
 
     if response.status_code == 200:
         response_data = response.json()
-        return f"Assistant response: {response_data['response']}"
+        return f"{response_data['response']}"
     else:
         return f"Error: {response.text}"
