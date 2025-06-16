@@ -17,7 +17,7 @@
 
 ### Link do hub.docker.com:
 
-https://hub.docker.com/repository/docker/justyna72/ebiznes/general
+[https://hub.docker.com/r/justyna72/ebiznes](https://hub.docker.com/r/justyna72/ebiznes)
 (obraz ma tag 'zadanie1')
 
 ### Opis Zadania
