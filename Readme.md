@@ -201,9 +201,9 @@ aplikacji via Github Actions. Należy zwrócić uwagę na zasoby dostępne
 na chmurze.
 
 * 3.0 Należy stworzyć odpowiednie instancje po stronie chmury na
-dockerze
+dockerze **Skonfigurowane w chmurze**
 * 3.5 Stworzyć odpowiedni pipeline w Github Actions do budowania
-aplikacji (np. via fatjar)
+aplikacji (np. via fatjar) [ostatni z poprawek commit](https://github.com/JustynaGargula/VariousTechnologies/commit/df35d112e74c6aec33d4d6dd47dcb10349b77877)
 * 4.0 Dodać notyfikację mailową o zbudowaniu aplikacji
 * 4.5 Dodać krok z deploymentem aplikacji serwerowej oraz klienckiej na
 chmurę
